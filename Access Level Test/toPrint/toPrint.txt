@@ -1,0 +1,121 @@
+A.java
+----------------------------------------------------------
+package a;
+
+public class A {
+	//Instance Methods
+	public void getPublic() {
+		System.out.println("Instance Public");
+	}
+	protected void getProtected() {
+		System.out.println("Instance Protected");
+	}	
+	void getDefault() {
+		System.out.println("Instance Package Private");
+	}	
+	private void getPrivate() {
+		System.out.println("Instance Private");		
+	}	
+		
+	//Class Methods
+	public static void getStaticPublic() {
+		System.out.println("Class Public");
+	}
+	protected static void getStaticProtected() {
+		System.out.println("Class Protected");
+	}	
+	static void getStaticDefault() {
+		System.out.println("Class Package Private");
+	}	
+	private static void getStaticPrivate() {
+		System.out.println("Class Private");		
+	}	
+	
+	public static void main(String[] args) {
+		A a = new A();		
+		a.getPublic();
+		a.getProtected();
+		a.getDefault();
+		a.getPrivate();
+		
+		getStaticPrivate();
+		getStaticDefault();
+		getStaticProtected();
+		getStaticPublic();		
+	}
+}
+
+
+D.java
+----------------------------------------------------------
+package a;
+
+public class D {
+	public static void main(String[] args) {
+		A a = new A();		
+		a.getPublic();
+		a.getProtected();
+		a.getDefault();
+		//a.getPrivate();		//Compilation fails. The method getPrivate() from the type A is not visible
+		
+		A.getStaticPublic();
+		A.getStaticProtected();
+		A.getStaticDefault();
+		//A.getStaticPrivate();	//Compilation fails. The method getStaticPrivate() from the type A is not visible
+	}
+}
+
+
+B.java
+----------------------------------------------------------
+package b;
+
+import a.A;
+
+public class B {
+	public static void main(String[] args) {
+		A a = new A();		
+		a.getPublic();
+		//a.getProtected();		//Compilation fails. The method getProtected() from the type A is not visible
+		//a.getDefault();		//Compilation fails. The method getDefault() from the type A is not visible
+		//a.getPrivate();		//Compilation fails. The method getPrivate() from the type A is not visible
+		
+		A.getStaticPublic();
+		//A.getStaticProtected();//Compilation fails. The method getStaticProtected() from the type A is not visible
+		//A.getStaticDefault();	//Compilation fails. The method getStaticProtected() from the type A is not visible
+		//A.getStaticPrivate();	//Compilation fails. The method getStaticPrivate() from the type A is not visible
+	}
+}
+
+
+C.java
+----------------------------------------------------------
+package c;
+
+import a.A;
+
+public class C extends A{
+	public static void main(String[] args) {
+		A a = new A();		
+		a.getPublic();
+		//a.getProtected();		//Compilation fails. The method getProtected() from the type A is not visible
+		//a.getDefault();		//Compilation fails. The method getDefault() from the type A is not visible
+		//a.getPrivate();		//Compilation fails. The method getPrivate() from the type A is not visible
+		
+		C c = new C();
+		c.getPublic();
+		c.getProtected();
+		//c.getDefault();		//Compilation fails. The method getDefault() from the type A is not visible
+		//c.getPrivate();		//Compilation fails. The method getPrivate() from the type A is not visible
+		
+		getStaticPublic();
+		getStaticProtected();
+		//getStaticDefault();	//Compilation fails. The method getStaticDefault() from the type A is not visible
+		//getStaticPrivate();	//Compilation fails. The method getStaticPrivate() from the type A is not visible
+		
+		A.getStaticPublic();
+		A.getStaticProtected();
+		//A.getStaticDefault();	//Compilation fails. The method getStaticProtected() from the type A is not visible
+		//A.getStaticPrivate();	//Compilation fails. The method getStaticPrivate() from the type A is not visible
+	}
+}
