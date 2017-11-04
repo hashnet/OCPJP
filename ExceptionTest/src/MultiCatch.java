@@ -1,3 +1,9 @@
+//java.lang.Object
+//	java.lang.Throwable
+//		java.lang.Exception
+//			java.io.IOException
+//				java.io.FileNotFoundException
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
