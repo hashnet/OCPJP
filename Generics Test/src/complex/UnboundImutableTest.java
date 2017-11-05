@@ -32,7 +32,7 @@ public class UnboundImutableTest {
 		addToUpperBoundedList(listD);
 		addToUpperBoundedList(listE);		
 		
-		addToLowerBoundedList(listObject);	ssd
+		addToLowerBoundedList(listObject);
 		addToLowerBoundedList(listA);
 		addToLowerBoundedList(listB);
 		addToLowerBoundedList(listC);		
