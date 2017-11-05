@@ -9,6 +9,7 @@ class EC extends EB {}
 abstract class Parent {
 	protected abstract B method(B b) throws EB;
 	protected abstract B exceptionMethod(B b) throws IllegalArgumentException;
+	protected abstract B noException(B b);
 	protected abstract int primitiveMethod(int i);
 	protected static B staticMethod(B b) {
 		return new B();//Compilation fails. This method requires a body instead of a semicolon
@@ -33,6 +34,8 @@ public class Child extends Parent {
 	}*/
 	
 	
+	
+	
 	//Access modifier must be more accessible than parent
 	/*@Override
 	private B method(B b) throws EB {	//Compilation fails. Cannot reduce the visibility of the inherited method from Parent
@@ -53,6 +56,8 @@ public class Child extends Parent {
 	public B method(B b) throws EB {	//OK
 		return new B();
 	}*/
+	
+	
 	
 	
 	//return type must be same or subclass of return type of parent
@@ -95,6 +100,8 @@ public class Child extends Parent {
 	protected short primitiveMethod(int i) {//Compilation fails. The return type is incompatible with Parent.primitiveMethod(int)
 		return 0;
 	}*/
+	
+	
 	
 	
 	//For checked exception, only the same or subclass of exception should be thrown
@@ -144,6 +151,8 @@ public class Child extends Parent {
 	}*/
 	
 	
+	
+	
 	//For unchecked exception, previous rule doesn’t apply
 	@Override
 	protected B exceptionMethod(B b) throws IllegalArgumentException {	//OK
@@ -169,6 +178,32 @@ public class Child extends Parent {
 	protected B exceptionMethod(B b) throws IllegalArgumentException, NumberFormatException{	//OK (Throwing any new Runtime Exception is allowed)
 		return new B();
 	}*/
+	
+	
+	
+	
+	//For no exception, same rule like unchecked exception applies
+	/*@Override
+	protected B noException(B b) {
+		return new B();
+	}*/
+	
+	@Override
+	protected B noException(B b) throws IllegalArgumentException {	//OK (Throwing any new Runtime Exception is allowed)
+		return new B();
+	}
+	
+	/*@Override
+	protected B noException(B b) throws Exception {	//Compilation fails. Exception Exception is not compatible with throws clause in Parent.noException(B)
+		return new B();
+	}*/
+	
+	/*@Override
+	protected B noException(B b) throws EB {	//Compilation fails. Exception EB is not compatible with throws clause in Parent.noException(B)
+		return new B();
+	}*/
+	
+	
 	
 	
 	//Static methods cannot be overriden
