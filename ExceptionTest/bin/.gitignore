@@ -20,3 +20,7 @@
 /MultiCatchHierarchy$RuntimeExceptionA.class
 /MultiCatchHierarchy$RuntimeExceptionB.class
 /MultiCatchHierarchy$RuntimeExceptionC.class
+/AutoException.class
+/SuppressedExpression.class
+/SuppressedException$SuppAuto.class
+/SuppressedException.class

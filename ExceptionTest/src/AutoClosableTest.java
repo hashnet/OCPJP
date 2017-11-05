@@ -22,6 +22,13 @@ class AutoIO implements AutoCloseable {
 	}
 }
 
+class AutoException implements AutoCloseable {
+	@Override
+	public void close() throws Exception {
+		System.out.println("Closing AutoException.");
+	}
+}
+
 public class AutoClosableTest {
 	public static void main(String[] args) {
 		try(Auto a = new Auto()){
@@ -29,14 +36,14 @@ public class AutoClosableTest {
 			
 			throw new RuntimeException();
 		} catch (RuntimeException e) {
-			System.out.println("Inside Catch.");
+			System.out.println("Inside Catch. Caught RuntimeException.");
 		} finally {
 			System.out.println("Inside Finally.");
 		}		
 		/*Output:
 			Inside Try.
 				Closing Auto.
-				Inside Catch.
+				Inside Catch. Caught RuntimeException.
 				Inside Finally.*/
 		
 		try(Auto a = new Auto()) {
@@ -69,10 +76,3 @@ public class AutoClosableTest {
 		}*/
 	}
 }
-
-/*Output:
-	Inside Try.
-	Closing A.
-	Inside Catch.
-	Inside Finally.*/
-
