@@ -24,7 +24,6 @@ public class MultiCatchHierarchy {
 		try {
 		} catch (RuntimeExceptionA | RuntimeExceptionC e) {}
 		
-		
 		try {
 		} catch (Exception e) {}
 		
