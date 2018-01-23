@@ -3,20 +3,20 @@ package complex;
 import java.util.ArrayList;
 import java.util.List;
 
-class A {}
-class B extends A {}
-class C extends B {}
-class D extends C {}
-class E extends D {}
+class AA {}
+class BB extends AA {}
+class CC extends BB {}
+class DD extends CC {}
+class EE extends DD {}
 
 public class UnboundImutableTest {
 	public static void main(String[] args) {
 		List<Object> listObject = new ArrayList<Object>();
-		List<A> listA = new ArrayList<>();
-		List<B> listB = new ArrayList<>();
-		List<C> listC = new ArrayList<>();
-		List<D> listD = new ArrayList<>();
-		List<E> listE = new ArrayList<>();
+		List<AA> listA = new ArrayList<>();
+		List<BB> listB = new ArrayList<>();
+		List<CC> listC = new ArrayList<>();
+		List<DD> listD = new ArrayList<>();
+		List<EE> listE = new ArrayList<>();
 		
 		addToUnBoundedList(listObject);
 		addToUnBoundedList(listA);
@@ -43,20 +43,20 @@ public class UnboundImutableTest {
 	}
 	
 	public static void addToUnBoundedList(List<?> list) {
-//		list.add(new B());			//The method add(capture#1-of ?) in the type List<capture#1-of ?> is not applicable for the arguments (B)
+//		list.add(new BB());			//The method add(capture#1-of ?) in the type List<capture#1-of ?> is not applicable for the arguments (B)
 //		list.add(new Object());		//The method add(capture#1-of ?) in the type List<capture#1-of ?> is not applicable for the arguments (Object)
-//		list.add(new C());			//he method add(capture#1-of ?) in the type List<capture#1-of ?> is not applicable for the arguments (C)
+//		list.add(new CC());			//he method add(capture#1-of ?) in the type List<capture#1-of ?> is not applicable for the arguments (C)
 	}
 	
-	public static void addToUpperBoundedList(List<? extends C> list) {
+	public static void addToUpperBoundedList(List<? extends CC> list) {
 //		list.add(new Object());		//The method add(capture#1-of ? extends C) in the type List<capture#1-of ? extends C> is not applicable for the arguments (Object)
-//		list.add(new C());			//The method add(capture#2-of ? extends C) in the type List<capture#2-of ? extends C> is not applicable for the arguments (C)
-//		list.add(new D());			//The method add(capture#1-of ? extends C) in the type List<capture#1-of ? extends C> is not applicable for the arguments (D)
+//		list.add(new CC());			//The method add(capture#2-of ? extends C) in the type List<capture#2-of ? extends C> is not applicable for the arguments (C)
+//		list.add(new DD());			//The method add(capture#1-of ? extends C) in the type List<capture#1-of ? extends C> is not applicable for the arguments (D)
 	}
 	
-	public static void addToLowerBoundedList(List<? super C> list) {
-		list.add(new C());
-//		list.add(new A());			//The method add(capture#2-of ? super C) in the type List<capture#2-of ? super C> is not applicable for the arguments (A)
-		list.add(new D());	
+	public static void addToLowerBoundedList(List<? super CC> list) {
+		list.add(new CC());
+//		list.add(new AA());			//The method add(capture#2-of ? super C) in the type List<capture#2-of ? super C> is not applicable for the arguments (A)
+		list.add(new DD());	
 	}
 }
